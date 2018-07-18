@@ -5,6 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent  {
+  allowNewServer = false;
+  CreateServerSession = 'Server session was not created before';
+  constructor() {
+    setTimeout(() => { this.allowNewServer = true; }, 2000);
+  }
+  onCreateServerSession() {
+    this.CreateServerSession = 'Server session is created';
+  }
+
 }
