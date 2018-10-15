@@ -1,0 +1,42 @@
+<!--<div class="container" >-->
+<!--&lt;!&ndash;<div class="col-md-6">&ndash;&gt;-->
+  <!--<h2> User Details</h2>-->
+  <!--<button class="btn btn-danger" (click)="addUser()"> Add User</button>-->
+  <!--<table class="table table-striped" style="width: 100%;">-->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<th class="hidden">Id</th>-->
+      <!--<th>ProductId</th>-->
+      <!--<th>ProductName</th>-->
+      <!--<th>ProductQuantity</th>-->
+      <!--<th>ProductSize</th>-->
+      <!--<th>Action</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr *ngFor="let user of products">-->
+      <!--<td class="hidden"></td>-->
+      <!--<td>{{user.productId}}</td>-->
+      <!--<td>{{user.productName}}</td>-->
+      <!--<td>{{user.productQuantity}}</td>-->
+      <!--<td>{{user.productSize}}</td>-->
+      <!--<td>-->
+        <!--<button class="btn btn-success" (click)="deleteUser(user)"> View</button>-->
+        <!--<button class="btn btn-success" (click)="editUser(user)" style="margin-left: 20px;"> Edit</button>-->
+        <!--&nbsp;&nbsp;-->
+        <!--<button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+
+
+
+<!--Smart Table-->
+
+<ng2-smart-table class='form-control' (deleteConfirm)="onDeleteConfirm($event)"
+                 (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+                 [settings]="settings"
+  [source]="products">
+</ng2-smart-table>
