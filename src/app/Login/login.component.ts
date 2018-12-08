@@ -1,6 +1,6 @@
-import {Component, ElementRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ServiceComponent} from './server.service';
-import {FormGroup, NgForm} from '@angular/forms';
+import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Response} from '@angular/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {isBoolean} from 'util';
@@ -16,15 +16,8 @@ import {ToasterService} from './ToastService';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
-
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  // stylesUrl: [ './login.component.css' ]
-})
-export class LoginComponent {
-   @ViewChild('f') signUpForm: NgForm;
+export class LoginComponent implements OnInit{
+  // @ViewChild('f') signUpForm: NgForm;
   getResponse: string;
   firstPassword: string;
   messageError: string;
@@ -34,11 +27,22 @@ export class LoginComponent {
   jsonObject: any;
   image: any;
   value: string;
+  signUpForm: FormGroup;;
   values =
     {
       username : '',
       password : ''
     };
+  ngOnInit() {
+      this.signUpForm = new FormGroup({
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+       // 'firstName': new FormControl(null, [Validators.required]),
+       // 'lastName': new FormControl(null, Validators.required),
+       // 'phoneNumber': new FormControl(null, [Validators.required]),
+        'password': new FormControl(null, Validators.required),
+       // 'confirmPassword': new FormControl(null, Validators.required)
+      });
+  }
   constructor(private serviceComponent: ServiceComponent, private router: ActivatedRoute, private route: Router,
               private sanitizer: DomSanitizer, private service: GetServiceFromSpring,
               private dialog: MatDialog, private toastaService: ToastaService, private toastaConfig: ToastaConfig,

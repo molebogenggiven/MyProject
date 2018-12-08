@@ -76,7 +76,8 @@ const appRoutes: Routes = [
   {path: 'editUserComponent' , component: EditUserComponent},
   {path: 'app-addproduct', component: AddproductComponent},
   {path: 'pp-get-all-products', component: GetProductsComponent},
-  {path: 'app-list-all-users', component: ListAllUsersComponent}
+  {path: 'app-list-all-users', component: ListAllUsersComponent},
+  {path: 'updateCustomer', component: UpdateUserComponent}
 ];
 @NgModule({
   declarations: [

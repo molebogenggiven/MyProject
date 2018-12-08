@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
     this.jsonMessage = this.serviceFromSpring.getProductDetails();
   }
   navigateToCheckOut() {
-    this.router.navigate(['/app-checkout']);
+    this.router.navigate(['/login']);
   }
 
 }

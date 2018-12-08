@@ -84,4 +84,7 @@ export class GetServiceFromSpring {
    submitVerificationDetails(jsonData: any) {
     return this.httpClient.post('http://localhost:080/customer/submitVerificationCode', jsonData);
    }
+  getCustomerById(username: string) {
+    return this.http.get('http://localhost:8080/customer/singleCustomer/' + username);
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {GetServiceFromSpring} from '../Services/getServiceFromSpring';
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'app-update-user',
@@ -25,11 +26,20 @@ export class UpdateUserComponent implements OnInit {
     title: 'mrs',
     gender: 'male'
   };
-
+  customerData: any;
   constructor(private saveCustomerSrvice: GetServiceFromSpring, private route: Router) {
   }
 
   ngOnInit() {
+
+    this.saveCustomerSrvice.getCustomerById('molebogeng.kubyana@gmail.com').
+    subscribe(
+      (response: Response) => {
+        this.customerData = response.json(),
+          console.log(response);
+      },
+      (error) => console.log(error)
+    );
     this.signUpForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'firstName': new FormControl(null, [Validators.required]),
